@@ -1,0 +1,10 @@
+
+_______________________________________________2023-01-30 08:41:35.124347_______________________________________________
+___________________________________________________dados_get_pm_laguna__________________________________________________
+
+{'id': 2129576, 'logradouro': {'id': 8689189, 'codigo': 1510, 'nome': 'CANTO DA LAGOA', 'tipoLogradouro': {'id': 143, 'descricao': 'Rua', 'abreviatura': 'R'}}, 'face': {'id': 102, 'descricao': 'Esquerdo', 'abreviatura': 'E'}, 'nroSecao': 0, 'templateId': None}
+{'id': 2129502, 'logradouro': {'id': 8688149, 'codigo': 442, 'nome': 'LEOBERTO LEAL', 'tipoLogradouro': {'id': 143, 'descricao': 'Rua', 'abreviatura': 'R'}}, 'face': {'id': 103, 'descricao': 'Ambos', 'abreviatura': 'A'}, 'nroSecao': 0, 'templateId': None}
+{'id': 2129580, 'logradouro': {'id': 8688571, 'codigo': 874, 'nome': 'PADRE MANOEL JOAO', 'tipoLogradouro': {'id': 143, 'descricao': 'Rua', 'abreviatura': 'R'}}, 'face': {'id': 103, 'descricao': 'Ambos', 'abreviatura': 'A'}, 'nroSecao': 0, 'templateId': None}
+{'id': 2128369, 'logradouro': {'id': 8689581, 'codigo': 1901, 'nome': 'ESTRADA GERAL PESCARIA BRAVA', 'tipoLogradouro': {'id': 143, 'descricao': 'Rua', 'abreviatura': 'R'}}, 'face': {'id': 101, 'descricao': 'Direito', 'abreviatura': 'D'}, 'nroSecao': 0, 'templateId': None}
+{'id': 2129649, 'logradouro': {'id': 8689727, 'codigo': 2047, 'nome': 'GERAL DO ESTREITO', 'tipoLogradouro': {'id': 66, 'descricao': 'Estrada', 'abreviatura': 'EST'}}, 'face': {'id': 103, 'descricao': 'Ambos', 'abreviatura': 'A'}, 'nroSecao': 0, 'templateId': None}
+
