@@ -1,0 +1,23 @@
+
+_____________________________________________2023-06-14 14:45:10.575919_____________________________________________
+_____________________________________________log_altera_pregao_presencial_____________________________________________
+
+
+
+id: 123
+{'id': 123'links': [{'rel': 'self', 'href': 'http://compras.betha.cloud/compras-services/api/exercicios/2023/processos-administrativo/123/forma-contratacao'}], 'processoAdmistrativo': {'id': 123, 'links': [{'rel': 'self', 'href': 'http://compras.betha.cloud/compras-services/api/processos-administrativo/123'}]}, 'comissao': {'id': 123}, 'membroComissao': {'id': 123, 'links': [{'rel': 'self', 'href': 'http://compras.betha.cloud/compras-services/api/membros-comissao/123'}]}, 'modalidade': {'id': 123, 'links': [{'rel': 'self', 'href': 'http://compras.betha.cloud/compras-services/api/modalidades/123'}]}, 'fundamentacaoLegal': {'id': 123}, 'responsavel': {'id': 123, 'links': [{'rel': 'self', 'href': 'http://compras.betha.cloud/compras-services/api/responsaveis/123'}]}, 'formaContratacao': {'valor': 'LICITACAO', 'descricao': 'LICITACAO'}, 'numeroSequencial':123, 'anoSequencial': 2023, 'numeroChamadaPublica': None, 'registroPreco': False, 'dataInicioRecebimentoEnvelope': '2023-01-01 00:00:00', 'dataFinalRecebimentoEnvelope': '2023-01-01 00:00:00', 'dataAberturaEnvelope': '2023-01-01 00:00:00', 'itemExclusivoMPE': False, 'exigeSubcontratacao': False, 'beneficiaMPELocais': True, 'indicaPercentCotaReservada': False, 'percentCotaReservada': 123.0, 'situacaoLances': {'valor': 'PENDENTE', 'descricao': 'PENDENTE'}, 'dataAutorizacaoAdesaoAtaRegPreco': None, 'modoDisputa': {'valor': 'ABERTO', 'descricao': 'ABERTO'}, 'desclassificaPropostaInvalida': {'valor': 'CLASSIFICA', 'descricao': 'CLASSIFICA'}, 'desclassificaPropostaInvalidaLote': {'valor': 'NAO_APLICA', 'descricao': 'NAO_APLICA'}}
+_____________________________________________2023-01-01 14:47:21.555238_____________________________________________
+_____________________________________________log_altera_pregao_presencial_____________________________________________
+
+
+
+id: 123
+{'id': 123, 'links': [{'rel': 'self', 'href': 'http://compras.betha.cloud/compras-services/api/exercicios/2023/processos-administrativo/123/forma-contratacao'}], 'processoAdmistrativo': {'id': 123, 'links': [{'rel': 'self', 'href': 'http://compras.betha.cloud/compras-services/api/processos-administrativo/123'}]}, 'comissao': {'id': 123}, 'membroComissao': {'id': 123, 'links': [{'rel': 'self', 'href': 'http://compras.betha.cloud/compras-services/api/membros-comissao/123'}]}, 'modalidade': {'id': 123, 'links': [{'rel': 'self', 'href': 'http://compras.betha.cloud/compras-services/api/modalidades/123'}]}, 'fundamentacaoLegal': {'id': 123}, 'responsavel': {'id': 123, 'links': [{'rel': 'self', 'href': 'http://compras.betha.cloud/compras-services/api/responsaveis/123'}]}, 'formaContratacao': {'valor': 'LICITACAO', 'descricao': 'LICITACAO'}, 'numeroSequencial': 123, 'anoSequencial': 2023, 'numeroChamadaPublica': None, 'registroPreco': False, 'dataInicioRecebimentoEnvelope': '2023-01-01 00:00:00', 'dataFinalRecebimentoEnvelope': '2023-01-01 00:00:00', 'dataAberturaEnvelope': '2023-01-01 00:00:00', 'itemExclusivoMPE': False, 'exigeSubcontratacao': False, 'beneficiaMPELocais': True, 'indicaPercentCotaReservada': False, 'percentCotaReservada': 123.0, 'situacaoLances': {'valor': 'PENDENTE', 'descricao': 'PENDENTE'}, 'dataAutorizacaoAdesaoAtaRegPreco': None, 'modoDisputa': {'valor': 'ABERTO', 'descricao': 'ABERTO'}, 'desclassificaPropostaInvalida': {'valor': 'CLASSIFICA', 'descricao': 'CLASSIFICA'}, 'desclassificaPropostaInvalidaLote': {'valor': 'CLASSIFICA', 'descricao': 'CLASSIFICA'}}
+
+_____________________________________________2023-06-15 17:16:41.095127_____________________________________________
+_____________________________________________log_altera_pregao_presencial_____________________________________________
+
+
+
+id: 123456
+{'message': 'Forma de contratação não definida para o processo administrativo com o identificador 123456'}

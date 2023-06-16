@@ -1,0 +1,170 @@
+[
+  {
+    "id": 123,
+    "links": [
+      {
+        "rel": "self",
+        "href": "http://compras.betha.cloud/compras-services/api/exercicios/2023/processos-administrativo/123/forma-contratacao"
+      }
+    ],
+    "processoAdmistrativo": {
+      "id": 123,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://compras.betha.cloud/compras-services/api/processos-administrativo/123"
+        }
+      ]
+    },
+    "comissao": {
+      "id": 123
+    },
+    "membroComissao": {
+      "id": 123,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://compras.betha.cloud/compras-services/api/membros-comissao/123"
+        }
+      ]
+    },
+    "modalidade": {
+      "id": 123,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://compras.betha.cloud/compras-services/api/modalidades/123"
+        }
+      ]
+    },
+    "fundamentacaoLegal": {
+      "id": 123
+    },
+    "responsavel": {
+      "id": 123,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://compras.betha.cloud/compras-services/api/responsaveis/123"
+        }
+      ]
+    },
+    "formaContratacao": {
+      "valor": "LICITACAO",
+      "descricao": "LICITACAO"
+    },
+    "numeroSequencial": 123,
+    "anoSequencial": 2023,
+    "numeroChamadaPublica": null,
+    "registroPreco": false,
+    "dataInicioRecebimentoEnvelope": "2023-01-01 00:00:00",
+    "dataFinalRecebimentoEnvelope": "2023-01-01 00:00:00",
+    "dataAberturaEnvelope": "2023-01-01 00:00:00",
+    "itemExclusivoMPE": false,
+    "exigeSubcontratacao": false,
+    "beneficiaMPELocais": true,
+    "indicaPercentCotaReservada": false,
+    "percentCotaReservada": 123,
+    "situacaoLances": {
+      "valor": "PENDENTE",
+      "descricao": "PENDENTE"
+    },
+    "dataAutorizacaoAdesaoAtaRegPreco": null,
+    "modoDisputa": {
+      "valor": "ABERTO",
+      "descricao": "ABERTO"
+    },
+    "desclassificaPropostaInvalida": {
+      "valor": "CLASSIFICA",
+      "descricao": "CLASSIFICA"
+    },
+    "desclassificaPropostaInvalidaLote": {
+      "valor": "NAO_APLICA",
+      "descricao": "NAO_APLICA"
+    }
+  },
+  {
+    "id": 123,
+    "links": [
+      {
+        "rel": "self",
+        "href": "http://compras.betha.cloud/compras-services/api/exercicios/2023/processos-administrativo/123/forma-contratacao"
+      }
+    ],
+    "processoAdmistrativo": {
+      "id": 123,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://compras.betha.cloud/compras-services/api/processos-administrativo/123"
+        }
+      ]
+    },
+    "comissao": {
+      "id": 123
+    },
+    "membroComissao": {
+      "id": 123,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://compras.betha.cloud/compras-services/api/membros-comissao/123"
+        }
+      ]
+    },
+    "modalidade": {
+      "id": 123,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://compras.betha.cloud/compras-services/api/modalidades/123"
+        }
+      ]
+    },
+    "fundamentacaoLegal": {
+      "id": 123
+    },
+    "responsavel": {
+      "id": 123,
+      "links": [
+        {
+          "rel": "self",
+          "href": "http://compras.betha.cloud/compras-services/api/responsaveis/123"
+        }
+      ]
+    },
+    "formaContratacao": {
+      "valor": "LICITACAO",
+      "descricao": "LICITACAO"
+    },
+    "numeroSequencial": 123,
+    "anoSequencial": 2023,
+    "numeroChamadaPublica": null,
+    "registroPreco": false,
+    "dataInicioRecebimentoEnvelope": "2023-01-01 00:00:00",
+    "dataFinalRecebimentoEnvelope": "2023-01-01 00:00:00",
+    "dataAberturaEnvelope": "2023-01-01 00:00:00",
+    "itemExclusivoMPE": false,
+    "exigeSubcontratacao": false,
+    "beneficiaMPELocais": true,
+    "indicaPercentCotaReservada": false,
+    "percentCotaReservada": 123,
+    "situacaoLances": {
+      "valor": "PENDENTE",
+      "descricao": "PENDENTE"
+    },
+    "dataAutorizacaoAdesaoAtaRegPreco": null,
+    "modoDisputa": {
+      "valor": "ABERTO",
+      "descricao": "ABERTO"
+    },
+    "desclassificaPropostaInvalida": {
+      "valor": "CLASSIFICA",
+      "descricao": "CLASSIFICA"
+    },
+    "desclassificaPropostaInvalidaLote": {
+      "valor": "CLASSIFICA",
+      "descricao": "CLASSIFICA"
+    }
+  }
+]
