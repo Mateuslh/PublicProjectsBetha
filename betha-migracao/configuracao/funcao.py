@@ -107,7 +107,7 @@ def transformar(lista_registro, modulo):
     retorno_enviar = modulo.enviar(lista_registro)
     print(f'- Processo de transformação finalizado')
     if True:
-        inserir_registro(retorno_enviar['lista_controle'])
+        # inserir_registro(retorno_enviar['lista_controle'])
         retorno = preparar(retorno_enviar['lista_dado'], modulo.endereco, modulo.lote,
                            modulo.tipo_registro, modulo.limite, modulo.sistema)
         inserir_lote(retorno)
@@ -286,7 +286,7 @@ def validar_lote(tipo_registro=None, incosistencia=None):
         total_lote = 0
         pendencia = True
         while pendencia:
-            comando = 'SELECT id_lote, url_consulta FROM public.controle_migracao_lotes WHERE status not in (3, 4, 5)'
+            comando = 'SELECT id_lote, url_consulta FROM bethadba.controle_migracao_lotes WHERE status not in (3, 4, 5)'
             if tipo_registro is not None:
                 comando += f" AND tipo_registro = '{tipo_registro}'"
             resultado = consultar(comando)
@@ -323,7 +323,7 @@ def validar_lote(tipo_registro=None, incosistencia=None):
                         status = retorno['statusLot']
                     else:
                         status = ''
-                    if status in ['AGUARDANDO_EXECUCAO', 'EXECUTANDO', 'QUEUE', 'PROCESSING']:
+                    if status in ['AGUARDANDO_EXECUCAO', 'EXECUTANDO', 'QUEUE', 'PROCESSING','NAO_PROCESSADO']:
                         pendencia = True
                     else:
                         incosistencia = analisar_lote(incosistencia, retorno, id_lote, tipo_registro)
@@ -383,15 +383,15 @@ def analisar_lote(incosistencia, retorno, id_lote, tipo_registro):
                 data_hora_ret = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         else:
             data_hora_ret = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        comando = """UPDATE public.controle_migracao_lotes
-                     SET status = {}, 
-                     data_hora_ret = '{}'
-                     WHERE id_lote = '{}'""".format(status_lote, data_hora_ret, id_registro)
+        comando = """UPDATE bethadba.controle_migracao_lotes
+                     SET status = {}
+                     WHERE id_lote = '{}'""".format(status_lote, id_registro)
         executar(comando)
         if 'retorno' in retorno:
             tipo = 'retorno'
         elif 'messageList' in retorno:
             tipo = 'messageList'
+
         else:
             raise Exception('* Sem tipo de retorno: ', retorno)
         for registro in retorno[tipo]:

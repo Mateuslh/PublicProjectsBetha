@@ -1,8 +1,8 @@
-from psycopg2 import connect, DatabaseError
+from pyodbc import connect, DatabaseError
 from os import getenv
 from dotenv import load_dotenv
 from os.path import join, dirname
-
+from json import dumps
 
 load_dotenv(join(dirname(__file__), '../.env'))
 AUTORIZACAO = getenv("TOKEN")
@@ -13,12 +13,13 @@ if not (TOKENUSER.lower().startswith('bearer')):
     TOKENUSER = f'bearer {TOKENUSER}'
 ACCESSUSER = getenv("ACCESSUSER")
 APPCONTEXT = getenv("APPCONTEXT")
+ODBC = getenv("ODBC")
+
 
 def conectar():
     conexao = None
     try:
-        conexao = connect(host=getenv("HOST"), port=getenv("PORT"), database=getenv("DATABASE"), user=getenv("USER"),
-                          password=getenv("PASSWORD"))
+        conexao = connect(f'DSN={ODBC}', ConnectionIdleTimeout=0)
     except (Exception, DatabaseError) as e:
         print(f'\n* Erro ao executar função "conectar". {e}')
     finally:
@@ -34,7 +35,9 @@ def executar(comando, registro=None, unico=True):
             else:
                 conexao['cursor'].execute(comando)
         else:
+            print(comando, registro)
             conexao['cursor'].executemany(comando, registro)
+
         conexao['conexao'].commit()
     except (Exception, DatabaseError) as e:
         print(f'\n* Erro ao executar função "executar". {e}')
@@ -64,40 +67,49 @@ def inserir_registro(lista_registro, limite=200):
         return
     try:
         lista_dado = []
-        comando = """INSERT INTO public.controle_migracao_registro 
-                     (sistema, tipo_registro, hash_chave_dsk, descricao_tipo_registro, id_desktop, id_gerado, i_chave_dsk1, 
-                     i_chave_dsk2, i_chave_dsk3, i_chave_dsk4, i_chave_dsk5, i_chave_dsk6, i_chave_dsk7, 
-                     i_chave_dsk8,i_chave_dsk9, i_chave_dsk10, i_chave_dsk11, i_chave_dsk12, json_enviado) 
-                     VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) 
-                     ON CONFLICT (hash_chave_dsk) DO UPDATE SET
-                     json_enviado = EXCLUDED.json_enviado,id_gerado = %s"""
         for registro in lista_registro:
-            dado = (
+            dado = """IF EXISTS (
+    SELECT hash_chave_dsk FROM bethadba.controle_migracao_registro WHERE hash_chave_dsk = '{}'
+) BEGIN
+    UPDATE bethadba.controle_migracao_registro SET
+        id_gerado = '{}'
+    WHERE hash_chave_dsk = '{}'
+END ELSE BEGIN
+    INSERT INTO bethadba.controle_migracao_registro (
+        sistema, tipo_registro, hash_chave_dsk, id_gerado, i_chave_dsk1, 
+        i_chave_dsk2, i_chave_dsk3, i_chave_dsk4, i_chave_dsk5, i_chave_dsk6, i_chave_dsk7, 
+        i_chave_dsk8, i_chave_dsk9, i_chave_dsk10, i_chave_dsk11, i_chave_dsk12
+    ) VALUES (
+        '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}'
+    )
+END
+                  """.format(
+                registro.get('hash_chave_dsk'),
+                registro.get('id_gerado'),
+                registro.get('hash_chave_dsk'),
                 registro.get('sistema'),
                 registro.get('tipo_registro'),
                 registro.get('hash_chave_dsk'),
-                registro.get('descricao_tipo_registro'),
-                registro.get('id_desktop'),
                 registro.get('id_gerado'),
                 registro.get('i_chave_dsk1'),
-                None if 'i_chave_dsk2' not in registro else registro.get('i_chave_dsk2'),
-                None if 'i_chave_dsk3' not in registro else registro.get('i_chave_dsk3'),
-                None if 'i_chave_dsk4' not in registro else registro.get('i_chave_dsk4'),
-                None if 'i_chave_dsk5' not in registro else registro.get('i_chave_dsk5'),
-                None if 'i_chave_dsk6' not in registro else registro.get('i_chave_dsk6'),
-                None if 'i_chave_dsk7' not in registro else registro.get('i_chave_dsk7'),
-                None if 'i_chave_dsk8' not in registro else registro.get('i_chave_dsk8'),
-                None if 'i_chave_dsk9' not in registro else registro.get('i_chave_dsk9'),
-                None if 'i_chave_dsk10' not in registro else registro.get('i_chave_dsk10'),
-                None if 'i_chave_dsk11' not in registro else registro.get('i_chave_dsk11'),
-                None if 'i_chave_dsk12' not in registro else registro.get('i_chave_dsk12'),
-                None if 'json' not in registro else registro.get('json'),
-                None if 'id_gerado' not in registro else registro.get('id_gerado')
+                '' if 'i_chave_dsk2' not in registro else registro.get('i_chave_dsk2'),
+                '' if 'i_chave_dsk3' not in registro else registro.get('i_chave_dsk3'),
+                '' if 'i_chave_dsk4' not in registro else registro.get('i_chave_dsk4'),
+                '' if 'i_chave_dsk5' not in registro else registro.get('i_chave_dsk5'),
+                '' if 'i_chave_dsk6' not in registro else registro.get('i_chave_dsk6'),
+                '' if 'i_chave_dsk7' not in registro else registro.get('i_chave_dsk7'),
+                '' if 'i_chave_dsk8' not in registro else registro.get('i_chave_dsk8'),
+                '' if 'i_chave_dsk9' not in registro else registro.get('i_chave_dsk9'),
+                '' if 'i_chave_dsk10' not in registro else registro.get('i_chave_dsk10'),
+                '' if 'i_chave_dsk11' not in registro else registro.get('i_chave_dsk11'),
+                '' if 'i_chave_dsk12' not in registro else registro.get('i_chave_dsk12'),
+                '' if 'id_gerado' not in registro else registro.get('id_gerado')
             )
             lista_dado.append(dado)
         lista_cortada = ([lista_dado[i:i + limite] for i in range(0, len(lista_dado), limite)])
-        for registro in lista_cortada:
-            executar(comando, registro, False)
+        for registro in lista_dado:
+            executar(registro)
+
     except Exception as e:
         print(f'\n* Erro ao executar função "inserir_registro". {e}')
 
@@ -107,18 +119,20 @@ def inserir_lote(lista_registro, limite=200):
         return
     # print(f'+ Inserindo dados na tabela de controle de lotes.')
     try:
-        comando = """INSERT INTO public.controle_migracao_lotes 
-                     (sistema, tipo_registro, data_hora_env, usuario, url_consulta, status,
-                     id_lote, conteudo_json) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"""
+
         lista_dado = []
         for registro in lista_registro:
-            lista_dado.append((registro['sistema'], registro['tipo_registro'],
+            dado = """INSERT INTO bethadba.controle_migracao_lotes 
+                                 (sistema, tipo_registro, data_hora_env, usuario, url_consulta, status,
+                                 id_lote) VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}')""".format(
+                                registro['sistema'], registro['tipo_registro'],
                                registro['data_hora_envio'], registro['usuario'],
                                registro['url_consulta'], registro['status'],
-                               registro['id_lote'], registro['conteudo_json']))
+                               registro['id_lote'])
+            lista_dado.append(dado)
         lista_cortada = ([lista_dado[i:i + limite] for i in range(0, len(lista_dado), limite)])
-        for registro in lista_cortada:
-            executar(comando, registro, False)
+        for registro in lista_dado:
+            executar(registro)
     except Exception as e:
         print(f'\n* Erro ao executar função "inserir_lote". {e}')
 
@@ -127,13 +141,13 @@ def atualizar_lote(lista_registro, limite=500):
     if len(lista_registro) <= 0:
         return
     try:
-        comando = "UPDATE public.controle_migracao_registro SET id_gerado = %s WHERE hash_chave_dsk = %s"
+
         lista_dado = []
         for registro in lista_registro:
-            lista_dado.append((registro[0], registro[1]))
+            lista_dado.append("UPDATE bethadba.controle_migracao_registro SET id_gerado = '{}' WHERE hash_chave_dsk = '{}'".format(registro[0], registro[1]))
         lista_cortada = ([lista_dado[i:i + limite] for i in range(0, len(lista_dado), limite)])
-        for registro in lista_cortada:
-            executar(comando, registro, False)
+        for registro in lista_dado:
+            executar(registro)
     except Exception as e:
         print(f'\n* Erro ao executar função "atualizar_lote". {e}')
 
@@ -143,11 +157,19 @@ def inserir_ocorrencia(lista_registro):
         return
     try:
         # print('+ Inserindo dados na tabela de controle de ocorrências.')
-        comando = """INSERT INTO public.controle_migracao_registro_ocor
-                     (hash_chave_dsk, sistema, tipo_registro, id_gerado, origem, situacao, resolvido,
-                     i_sequencial_lote, id_integracao, mensagem_erro, mensagem_ajuda, json_enviado, id_existente)
-                     VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"""
         for registro in lista_registro:
-            executar(comando, registro)
+            print(registro)
+            registro = dumps(registro)
+            print(registro)
+            dado = """INSERT INTO bethadba.controle_migracao_registro_ocor
+                                 (hash_chave_dsk, sistema, tipo_registro, id_gerado, origem, situacao, resolvido,
+                                 i_sequencial_lote, id_integracao, mensagem_erro, mensagem_ajuda, id_existente)
+                                 VALUES ('{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}', '{}')""".format(
+                registro[1], registro[2], registro[2],
+                registro[3], registro[4], registro[4], registro[5],
+                registro[6], registro[7], registro[8], registro[9],
+             registro[10]
+            )
+            executar(dado)
     except Exception as e:
         print(f'\n* Erro ao executar função "inserir_ocorrencia". {e}')
