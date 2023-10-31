@@ -23,8 +23,8 @@ def extrair(registro, conteudo):
     conteudo.pop(-1)
     for coluna in primeira:
         lista_chave.append(coluna)
-    drop = """DROP TABLE IF EXISTS public.{} CASCADE""".format(registro)
-    create = """CREATE TABLE IF NOT EXISTS public.{} (
+    drop = """DROP TABLE IF EXISTS bethadba.{} CASCADE""".format(registro)
+    create = """CREATE TABLE IF NOT EXISTS bethadba.{} (
                 i_sequencial serial NOT NULL,
                 {})""".format(registro, ",".join([i + " text NULL" for i in set(lista_chave)]))
     executar(drop)
@@ -57,7 +57,7 @@ def extrair(registro, conteudo):
             lista_dados.append(dado)
         print(f'\r+ Gerando registro: {indice+1}', end='\n' if indice == total - 1 else '')
         if len(lista_chave) == len(lista_dados):
-            lista_inserir.append("""INSERT INTO public.{}({}) VALUES({})
+            lista_inserir.append("""INSERT INTO bethadba.{}({}) VALUES({})
                     """.format(registro,
                                ",".join(lista_chave),
                                ",".join(['null' if lista_dados[i] is None else "'"+str.replace(lista_dados[i], "'", "''").strip()+"'" for i in

@@ -41,49 +41,7 @@ def extracao():
 # Buscar, Atualizar, Enviar, Validar Lote
 def transformacao():
     iniciar_envio(False, True, True, True, [
-            # sincronizar os municipios
-            # 'disciplinas',
-            # 'responsaveis',
-            # 'filiacoes',
-            # 'religiao',
-            'alunos',
-            # 'funcionario',
-            # 'curso-aperfeicoamento'
-            # 'curso-aperfeicoamento-funcionario'
-            # 'estabelecimento',
-            # 'historico-escolar',
-            # 'cursos',
-            # 'matriz-curricular',
-            # 'etapa-matriz',
-            # 'etapa-matriz-disciplina',
-            # 'configuracao-horas-aulas',
-            # inserir no banco tipo-avaliacao cadastrado na mao
-
-    #------------------------------replica por ano (mudar ano no sql)------------------------------
-            # inserir no banco ano-letivo cadastrado na mao     # feito todos os anos
-            # 'calendario-secretaria',                          # feito todos os anos
-            # 'calendario-estabelecimento'                      # feito todos os anos
-            # 'calendario-matriz-curricular',                   # feito todos os anos
-            # 'quadro-vagas',                                   # feito todos os anos
-            # 'turmas',                                         # feito todos os anos
-            # 'matricula-movimentacao',                         # feito todos os anos
-            # 'turmas-tipos-avaliacoes',                        # feito todos os anos
-            # sincronizar os items avaliaveis                   # feito todos os anos
-            # 'registro-avaliacao',                             # feito todos os anos
-            # 'registro-avaliacao-media',                       # feito todos os anos
-            # sincronizar os itens educacionais                 # feito todos os anos
-            # sincronizar os periodos avaliativos               # feito todos os anos
-            # 'registro-frequencia',                            # feito todos os anos
-
-            # 'turmas-sub'
-            # 'matricula-movimentacao-sub'
-            # 'turmas-tipos-avaliacoes-sub'
-            # 'registro-avaliacao-sub'
-            # 'registro-avaliacao-media-sub'
-            # 'registro-frequencia-sub'
-
-
-            # 'encerramento'
+           'auditoria-imoveis'
     ])
 
 
@@ -101,7 +59,7 @@ def sincronizar():
 if __name__ == '__main__':
     # exclusao()
     # configuracao()
-    extracao()
+    # extracao()
     # sincronizar()
-    # transformacao()
+    transformacao()
     pass
